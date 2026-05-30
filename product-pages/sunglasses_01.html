@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sunglasses 01 – Product View</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        background: #ffffff;
+        color: #222;
+        font-family: Arial, sans-serif;
+    }
+
+    .wrapper {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    /* Back button */
+    .back a {
+        color: #333;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    /* Main image viewer */
+    .viewer {
+        width: 100%;
+        height: 70vh;
+        overflow-x: scroll;
+        display: flex;
+        scroll-snap-type: x mandatory;
+        border-radius: 12px;
+        background: #f2f2f2;
+    }
+
+    .viewer img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        scroll-snap-align: center;
+    }
+
+    .viewer::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Thumbnails */
+    .thumbs {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    .thumbs img {
+        width: 90px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: 0.2s;
+    }
+
+    .thumbs img:hover {
+        border-color: #d4af37;
+    }
+
+    /* Price box */
+    .info-box {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 12px;
+        background: #fafafa;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .price {
+        font-size: 24px;
+        font-weight: bold;
+        color: #d4af37;
+    }
+
+    .availability {
+        font-size: 18px;
+        margin-top: 5px;
+        font-weight: bold;
+    }
+
+    .available {
+        color: #2ecc71;
+    }
+
+    .soldout {
+        color: #e74c3c;
+    }
+</style>
+
+<script>
+function showImage(index) {
+    const viewer = document.querySelector('.viewer');
+    viewer.scrollTo({
+        left: viewer.clientWidth * index,
+        behavior: 'smooth'
+    });
+}
+</script>
+
+</head>
+<body>
+
+<div class="wrapper">
+
+    <!-- Back button -->
+    <div class="back">
+        <a href="../sunglasses.html">← Back</a>
+    </div>
+
+    <!-- Main image viewer -->
+    <div class="viewer">
+        <img src="sunglasses_01/full/1.jpeg">
+        <img src="sunglasses_01/full/2.jpeg">
+        <img src="sunglasses_01/full/3.jpeg">
+        <img src="sunglasses_01/full/4.jpeg">
+        <img src="sunglasses_01/full/5.jpeg">
+        <img src="sunglasses_01/full/6.jpeg">
+    </div>
+
+    <!-- Thumbnails -->
+    <div class="thumbs">
+        <img src="sunglasses_01/full/1.jpeg" onclick="showImage(0)">
+        <img src="sunglasses_01/full/2.jpeg" onclick="showImage(1)">
+        <img src="sunglasses_01/full/3.jpeg" onclick="showImage(2)">
+        <img src="sunglasses_01/full/4.jpeg" onclick="showImage(3)">
+        <img src="sunglasses_01/full/5.jpeg" onclick="showImage(4)">
+        <img src="sunglasses_01/full/6.jpeg" onclick="showImage(5)">
+    </div>
+
+    <!-- Price + Availability -->
+    <div class="info-box">
+        <div class="price">$140</div>
+
+        <!-- CHANGE THIS LINE TO SWITCH STATUS -->
+        <div class="availability available">Available</div>
+
+        <!-- For sold out, replace with:
+        <div class="availability soldout">Sold Out</div>
+        -->
+    </div>
+
+</div>
+
+</body>
+</html>
