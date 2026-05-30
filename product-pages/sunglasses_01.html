@@ -6,152 +6,128 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-    body {
-        margin: 0;
-        background: #ffffff;
-        color: #222;
-        font-family: Arial, sans-serif;
-    }
+body{
+    margin:0;
+    background:#ffffff;
+    font-family:Arial,sans-serif;
+}
 
-    .wrapper {
-        max-width: 900px;
-        margin: auto;
-        padding: 20px;
-    }
+.wrapper{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
 
-    /* Back button */
-    .back a {
-        color: #333;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: bold;
-    }
+/* زر الرجوع */
+.back a{
+    color:#333;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+}
 
-    /* Main image viewer */
-    .viewer {
-        width: 100%;
-        height: 70vh;
-        overflow-x: scroll;
-        display: flex;
-        scroll-snap-type: x mandatory;
-        border-radius: 12px;
-        background: #f2f2f2;
-    }
+/* السلايدر */
+.viewer-container{
+    position:relative;
+    width:100%;
+    height:70vh;
+    overflow:hidden;
+    border-radius:12px;
+    background:#f2f2f2;
+    margin-top:20px;
+}
 
-    .viewer img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        scroll-snap-align: center;
-    }
+.viewer{
+    display:flex;
+    width:100%;
+    height:100%;
+    transition:transform 0.4s ease;
+}
 
-    .viewer::-webkit-scrollbar {
-        display: none;
-    }
+.viewer img{
+    min-width:100%;
+    height:100%;
+    object-fit:contain;
+}
 
-    /* Thumbnails */
-    .thumbs {
-        display: flex;
-        gap: 10px;
-        margin-top: 15px;
-        overflow-x: auto;
-    }
+/* الأسهم */
+.arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(255,255,255,0.2);
+    border:none;
+    color:white;
+    font-size:40px;
+    padding:10px 15px;
+    cursor:pointer;
+    border-radius:50%;
+    backdrop-filter:blur(4px);
+    transition:0.2s;
+    z-index:10;
+}
 
-    .thumbs img {
-        width: 90px;
-        height: 90px;
-        object-fit: cover;
-        border-radius: 8px;
-        cursor: pointer;
-        border: 2px solid transparent;
-        transition: 0.2s;
-    }
+.arrow:hover{
+    background:rgba(255,255,255,0.4);
+}
 
-    .thumbs img:hover {
-        border-color: #d4af37;
-    }
+.arrow.left{
+    left:15px;
+}
 
-    /* Price box */
-    .info-box {
-        margin-top: 20px;
-        padding: 15px;
-        border-radius: 12px;
-        background: #fafafa;
-        border: 1px solid #ddd;
-        text-align: center;
-    }
-
-    .price {
-        font-size: 24px;
-        font-weight: bold;
-        color: #d4af37;
-    }
-
-    .availability {
-        font-size: 18px;
-        margin-top: 5px;
-        font-weight: bold;
-    }
-
-    .available {
-        color: #2ecc71;
-    }
-
-    .soldout {
-        color: #e74c3c;
-    }
+.arrow.right{
+    right:15px;
+}
 </style>
 
 <script>
-function showImage(index) {
-    const viewer = document.querySelector('.viewer');
-    viewer.scrollTo({
-        left: viewer.clientWidth * index,
-        behavior: 'smooth'
-    });
+let currentIndex = 0;
+
+function updateSlider() {
+    const viewer = document.getElementById('viewer');
+    viewer.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+function nextImage() {
+    const total = document.querySelectorAll('.viewer img').length;
+    currentIndex = (currentIndex + 1) % total;
+    updateSlider();
+}
+
+function prevImage() {
+    const total = document.querySelectorAll('.viewer img').length;
+    currentIndex = (currentIndex - 1 + total) % total;
+    updateSlider();
 }
 </script>
 
 </head>
+
 <body>
 
 <div class="wrapper">
 
-    <!-- Back button -->
+    <!-- زر الرجوع -->
     <div class="back">
         <a href="../sunglasses.html">← Back</a>
     </div>
 
-    <!-- Main image viewer -->
-    <div class="viewer">
-        <img src="sunglasses_01/full/1.jpeg">
-        <img src="sunglasses_01/full/2.jpeg">
-        <img src="sunglasses_01/full/3.jpeg">
-        <img src="sunglasses_01/full/4.jpeg">
-        <img src="sunglasses_01/full/5.jpeg">
-        <img src="sunglasses_01/full/6.jpeg">
-    </div>
+    <!-- الصور -->
+    <div class="viewer-container">
 
-    <!-- Thumbnails -->
-    <div class="thumbs">
-        <img src="sunglasses_01/full/1.jpeg" onclick="showImage(0)">
-        <img src="sunglasses_01/full/2.jpeg" onclick="showImage(1)">
-        <img src="sunglasses_01/full/3.jpeg" onclick="showImage(2)">
-        <img src="sunglasses_01/full/4.jpeg" onclick="showImage(3)">
-        <img src="sunglasses_01/full/5.jpeg" onclick="showImage(4)">
-        <img src="sunglasses_01/full/6.jpeg" onclick="showImage(5)">
-    </div>
+        <button class="arrow left" onclick="prevImage()">❮</button>
 
-    <!-- Price + Availability -->
-    <div class="info-box">
-        <div class="price">$140</div>
+        <div class="viewer" id="viewer">
+            <img src="sunglasses_01/full/1.jpeg">
+            <img src="sunglasses_01/full/2.jpeg">
+            <img src="sunglasses_01/full/3.jpeg">
+            <img src="sunglasses_01/full/4.jpeg">
+            <img src="sunglasses_01/full/5.jpeg">
+            <img src="sunglasses_01/full/6.jpeg">
+        </div>
 
-        <!-- CHANGE THIS LINE TO SWITCH STATUS -->
-        <div class="availability available">Available</div>
+        <button class="arrow right" onclick="nextImage()">❯</button>
 
-        <!-- For sold out, replace with:
-        <div class="availability soldout">Sold Out</div>
-        -->
     </div>
 
 </div>
