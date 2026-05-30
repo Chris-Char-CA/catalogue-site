@@ -4,27 +4,43 @@
     <meta charset="UTF-8">
     <title>Sunglasses</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; }
-        h1 { text-align: center; padding: 20px 0; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #f5f5f5; 
+            margin: 0; 
+        }
+
+        h1 { 
+            text-align: center; 
+            padding: 20px 0; 
+        }
+
         .back-link {
             text-align: center;
             margin-bottom: 10px;
         }
+
         .back-link a {
             color: #0077cc;
             text-decoration: none;
         }
+
+        /* SAME SIZE AS SCARFS PAGE */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
             padding: 20px 40px 40px;
         }
+
         .item img {
             width: 100%;
+            height: 200px; /* ensures consistent size */
+            object-fit: cover;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+
         .item:hover {
             transform: scale(1.03);
             transition: 0.2s;
@@ -34,21 +50,32 @@
 <body>
 
 <h1>Sunglasses</h1>
-<div class="back-link"><a href="index.html">← Back to main catalogue</a></div>
+
+<div class="back-link">
+    <a href="index.html">← Back to main catalogue</a>
+</div>
 
 <div class="grid">
-    <a class="item" href="full/sunglasses_01.jpg" target="_blank">
+
+    <!-- PRODUCT 01 -->
+    <a class="item" href="product-pages/sunglasses_01.html">
         <img src="thumbs/sunglasses_01.jpg" alt="Sunglasses 1">
     </a>
-    <a class="item" href="full/sunglasses_02.jpg" target="_blank">
+
+    <!-- PRODUCT 02 (add more like this) -->
+    <!--
+    <a class="item" href="product-pages/sunglasses_02.html">
         <img src="thumbs/sunglasses_02.jpg" alt="Sunglasses 2">
     </a>
-        <a class="item" href="full/sunglasses_03.jpg" target="_blank">
-        <img src="thumbs/sunglasses_02.jpg" alt="Sunglasses 3">
+    -->
+
+    <!-- PRODUCT 03 -->
+    <!--
+    <a class="item" href="product-pages/sunglasses_03.html">
+        <img src="thumbs/sunglasses_03.jpg" alt="Sunglasses 3">
     </a>
-        <a class="item" href="full/sunglasses_04.jpg" target="_blank">
-        <img src="thumbs/sunglasses_02.jpg" alt="Sunglasses 4">
-    </a>
+    -->
+
 </div>
 
 </body>
