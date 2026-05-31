@@ -37,7 +37,7 @@
         /* PRODUCT GRID */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
             padding: 30px 40px 40px;
         }
@@ -78,7 +78,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 30px;
+            gap: 80px; /* about 5 spaces */
             padding: 40px 0 50px;
         }
 
@@ -98,6 +98,13 @@
 
         .social-icons img:hover {
             transform: scale(1.15);
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
