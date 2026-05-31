@@ -35,16 +35,33 @@ body{
     padding:20px;
 }
 
+/* HOME BUTTON */
+.home{
+    margin-bottom:10px;
+}
+
+.home a{
+    
+    color:white;
+    text-decoration:none;
+    font-size:24px; /* 30% bigger */
+    font-weight:bold;
+    margin-left:30px; /* move right ~3 spaces */
+
+}
+
 /* Back Button */
 .back{
     margin-top:10px;
 }
 
 .back a{
+    
     color:white;
     text-decoration:none;
-    font-size:18px;
+    font-size:24px; /* 30% bigger */
     font-weight:bold;
+
 }
 
 /* Slider */
@@ -178,6 +195,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
 <div class="wrapper">
 
+    <!-- HOME BUTTON -->
+    <div class="home">
+        <a href="../index.html">Home</a>
+    </div>
+
     <!-- Back Button -->
     <div class="back">
         <a href="../sunglasses.html">← Back</a>
@@ -214,3 +236,4 @@ window.addEventListener('DOMContentLoaded', () => {
 </div>
 
 </body>
+</html>
