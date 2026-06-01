@@ -12,24 +12,18 @@
             color: white;
         }
 
-        /* HEADER */
         .header {
             width: 100%;
-            margin: 0;
-            padding: 0;
         }
 
         .header img {
             width: 100%;
-            height: auto;
             display: block;
-            object-fit: cover;
         }
 
         h1 { 
             text-align: center; 
             padding: 25px 0 15px;
-            color: white;
             font-size: 42px;
             margin: 0;
         }
@@ -46,7 +40,6 @@
             font-weight: bold;
         }
 
-        /* 2 PRODUCTS PER ROW */
         .grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -58,37 +51,31 @@
             text-align: center;
         }
 
-        /* REDUCED PRODUCT IMAGES (-15%) */
         .item img {
             width: 85%;
             height: 290px;
             object-fit: cover;
             border-radius: 14px;
             box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-            transition: 0.2s;
         }
 
-        .item:hover img {
-            transform: scale(1.03);
-        }
-
-        /* PRICE */
         .price {
             font-size: 22px;
             font-weight: bold;
-            color: white;
             margin-top: 12px;
         }
 
-        /* AVAILABLE / SOLD OUT */
         .availability {
             font-size: 18px;
             font-weight: bold;
-            color: #fed57e;
             margin-top: 6px;
         }
 
-        /* MOBILE RESPONSIVE */
+        /* SOLD OUT COLOR */
+        .availability.sold-out {
+            color: #0c5e65;
+        }
+
         @media (max-width: 768px) {
             .grid {
                 grid-template-columns: 1fr;
@@ -104,9 +91,8 @@
 
 <body>
 
-    <!-- FULL WIDTH HEADER -->
     <div class="header">
-        <img src="https://i.postimg.cc/sD1pmPzC/IMG-6054.png" alt="Header Banner">
+        <img src="https://i.postimg.cc/sD1pmPzC/IMG-6054.png">
     </div>
 
     <h1>Sunglasses</h1>
@@ -119,62 +105,30 @@
 
         <!-- PRODUCT 1 -->
         <div class="item">
-            <a href="product-pages/sunglasses_01.html">
-                <img src="https://i.postimg.cc/SxTbhrMv/1.jpg" alt="Chrome Hearts Datass">
-            </a>
-
-            <div class="price">
-                Chrome Hearts Datass - $140
-            </div>
-
-            <div class="availability">
-                Available
-            </div>
+            <img src="https://i.postimg.cc/SxTbhrMv/1.jpg">
+            <div class="price">Chrome Hearts Datass - $140</div>
+            <div class="availability sold-out">SOLD OUT</div>
         </div>
 
         <!-- PRODUCT 2 -->
         <div class="item">
-            <a href="product-pages/sunglasses_02.html">
-                <img src="https://i.postimg.cc/1zVwSytJ/1.jpg" alt="Sato La VEGA">
-            </a>
-
-            <div class="price">
-                Sato La VEGA - $170
-            </div>
-
-            <div class="availability">
-                Available
-            </div>
+            <img src="https://i.postimg.cc/1zVwSytJ/1.jpg">
+            <div class="price">Sato La VEGA - $170</div>
+            <div class="availability sold-out">SOLD OUT</div>
         </div>
 
         <!-- PRODUCT 3 -->
         <div class="item">
-            <a href="product-pages/sunglasses_03.html">
-                <img src="https://i.postimg.cc/brVwd2VP/1.jpg" alt="BOTTEGA VENETTA BV1336OA">
-            </a>
-
-            <div class="price">
-                BOTTEGA VENETTA BV1336OA - $115
-            </div>
-
-            <div class="availability">
-                Available
-            </div>
+            <img src="https://i.postimg.cc/brVwd2VP/1.jpg">
+            <div class="price">BOTTEGA VENETTA BV1336OA - $115</div>
+            <div class="availability sold-out">SOLD OUT</div>
         </div>
 
         <!-- PRODUCT 4 -->
         <div class="item">
-            <a href="product-pages/sunglasses_04.html">
-                <img src="https://i.postimg.cc/rpRwhJyK/1.avif" alt="BALENCIAGA 2.0 NAVIGATOR">
-            </a>
-
-            <div class="price">
-                BALENCIAGA 2.0 NAVIGATOR SUNGLASSES - $110
-            </div>
-
-            <div class="availability">
-                Available
-            </div>
+            <img src="https://i.postimg.cc/rpRwhJyK/1.avif">
+            <div class="price">BALENCIAGA 2.0 NAVIGATOR SUNGLASSES - $110</div>
+            <div class="availability sold-out">SOLD OUT</div>
         </div>
 
     </div>
