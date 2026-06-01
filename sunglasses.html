@@ -65,15 +65,12 @@
             margin-top: 12px;
         }
 
+        /* Default AVAILABLE color */
         .availability {
             font-size: 18px;
             font-weight: bold;
+            color: #fed57e;
             margin-top: 6px;
-        }
-
-        /* SOLD OUT COLOR */
-        .availability.sold-out {
-            color: #0c5e65;
         }
 
         @media (max-width: 768px) {
@@ -92,7 +89,7 @@
 <body>
 
     <div class="header">
-        <img src="https://i.postimg.cc/sD1pmPzC/IMG-6054.png">
+        <img src="https://i.postimg.cc/sD1pmPzC/IMG-6054.png" alt="Header Banner">
     </div>
 
     <h1>Sunglasses</h1>
@@ -107,31 +104,40 @@
         <div class="item">
             <img src="https://i.postimg.cc/SxTbhrMv/1.jpg">
             <div class="price">Chrome Hearts Datass - $140</div>
-            <div class="availability sold-out">SOLD OUT</div>
+            <div class="availability">SOLD OUT</div>
         </div>
 
         <!-- PRODUCT 2 -->
         <div class="item">
             <img src="https://i.postimg.cc/1zVwSytJ/1.jpg">
             <div class="price">Sato La VEGA - $170</div>
-            <div class="availability sold-out">SOLD OUT</div>
+            <div class="availability">AVAILABLE</div>
         </div>
 
         <!-- PRODUCT 3 -->
         <div class="item">
             <img src="https://i.postimg.cc/brVwd2VP/1.jpg">
             <div class="price">BOTTEGA VENETTA BV1336OA - $115</div>
-            <div class="availability sold-out">SOLD OUT</div>
+            <div class="availability">AVAILABLE</div>
         </div>
 
         <!-- PRODUCT 4 -->
         <div class="item">
             <img src="https://i.postimg.cc/rpRwhJyK/1.avif">
             <div class="price">BALENCIAGA 2.0 NAVIGATOR SUNGLASSES - $110</div>
-            <div class="availability sold-out">SOLD OUT</div>
+            <div class="availability">AVAILABLE</div>
         </div>
 
     </div>
+
+    <!-- ✅ AUTO COLOR SCRIPT -->
+    <script>
+    document.querySelectorAll('.availability').forEach(el => {
+        if (el.textContent.trim().toUpperCase() === "SOLD OUT") {
+            el.style.color = "#0c5e65";
+        }
+    });
+    </script>
 
 </body>
 </html>
