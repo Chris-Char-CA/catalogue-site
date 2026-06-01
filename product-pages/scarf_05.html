@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>scarf_01 – Product View</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    background:#650c32;
+    font-family:Arial,sans-serif;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* FULL WIDTH HEADER */
+.header{
+    width:100%;
+    margin:0;
+    padding:0;
+}
+
+.header img{
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:cover;
+}
+
+/* Wrapper */
+.wrapper{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+/* HOME BUTTON */
+.home{
+    margin-bottom:10px;
+}
+
+.home a{
+    
+    color:white;
+    text-decoration:none;
+    font-size:24px; /* 30% bigger */
+    font-weight:bold;
+    margin-left:30px; /* move right ~3 spaces */
+
+}
+
+/* Back Button */
+.back{
+    margin-top:10px;
+}
+
+.back a{
+    
+    color:white;
+    text-decoration:none;
+    font-size:24px; /* 30% bigger */
+    font-weight:bold;
+
+}
+
+/* Slider */
+.viewer-container{
+    position:relative;
+    width:100%;
+    height:75vh;
+    overflow:hidden;
+    border-radius:14px;
+    background:#7a1743;
+    margin-top:20px;
+
+    /* ENABLE TOUCH SWIPE */
+    touch-action:pan-y;
+}
+
+/* Image Track */
+.viewer{
+    display:flex;
+    width:100%;
+    height:100%;
+    transition:transform 0.35s ease;
+}
+
+/* Images */
+.viewer img{
+    min-width:100%;
+    height:100%;
+    object-fit:contain;
+    image-rendering:auto;
+    background:#7a1743;
+
+    /* PREVENT IMAGE DRAG */
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
+/* TRANSPARENT ARROWS */
+.arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:transparent;
+    border:none;
+    color:rgba(255,255,255,0.25);
+    font-size:55px;
+    cursor:pointer;
+    z-index:10;
+    transition:0.2s;
+    padding:10px;
+}
+
+/* HOVER EFFECT */
+.arrow:hover{
+    color:rgba(255,255,255,0.6);
+}
+
+/* LEFT ARROW */
+.arrow.left{
+    left:10px;
+}
+
+/* RIGHT ARROW */
+.arrow.right{
+    right:10px;
+}
+</style>
+
+<script>
+let currentIndex = 0;
+let startX = 0;
+let endX = 0;
+
+function updateSlider() {
+    const viewer = document.getElementById('viewer');
+    viewer.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+function nextImage() {
+    const total = document.querySelectorAll('.viewer img').length;
+    currentIndex = (currentIndex + 1) % total;
+    updateSlider();
+}
+
+function prevImage() {
+    const total = document.querySelectorAll('.viewer img').length;
+    currentIndex = (currentIndex - 1 + total) % total;
+    updateSlider();
+}
+
+/* TOUCH SWIPE SUPPORT */
+window.addEventListener('DOMContentLoaded', () => {
+
+    const slider = document.querySelector('.viewer-container');
+
+    slider.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    slider.addEventListener('touchmove', (e) => {
+        endX = e.touches[0].clientX;
+    });
+
+    slider.addEventListener('touchend', () => {
+
+        let difference = startX - endX;
+
+        /* SWIPE LEFT */
+        if (difference > 50) {
+            nextImage();
+        }
+
+        /* SWIPE RIGHT */
+        else if (difference < -50) {
+            prevImage();
+        }
+
+    });
+
+});
+</script>
+
+</head>
+
+<body>
+
+<!-- FULL WIDTH HEADER -->
+<div class="header">
+    <img src="https://i.postimg.cc/sD1pmPzC/IMG-6054.png" alt="Header Banner">
+</div>
+
+<div class="wrapper">
+
+    <!-- HOME BUTTON -->
+    <div class="home">
+        <a href="../index.html">Home</a>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back">
+        <a href="../scarfs.html">← Back</a>
+    </div>
+
+    <!-- Image Slider -->
+    <div class="viewer-container">
+
+        <!-- LEFT ARROW -->
+        <button class="arrow left" onclick="prevImage()">❮</button>
+
+        <!-- IMAGES -->
+        <div class="viewer" id="viewer">
+
+            <img src="https://i.postimg.cc/K8Tvr6X1/1.jpg" loading="lazy">
+            <img src="https://i.postimg.cc/SQtS0Skc/2.jpg" loading="lazy">
+            <img src="https://i.postimg.cc/dVGwTGrK/3.jpg" loading="lazy">
+            <img src="https://i.postimg.cc/nzhJ555Z/4.jpg" loading="lazy">
+            <img src="https://i.postimg.cc/4yKT4csb/5.jpg" loading="lazy">
+            <img src="https://i.postimg.cc/Y2VHndx7/6.jpg" loading="lazy">
+            <img src="https://i.postimg.cc/fbwntpMt/7.jpg" loading="lazy">
+
+        </div>
+
+        <!-- RIGHT ARROW -->
+        <button class="arrow right" onclick="nextImage()">❯</button>
+
+    </div>
+
+</div>
+
+</body>
+</html>
